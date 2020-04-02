@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CadastroUsuarioActivity">
 
+
     <RelativeLayout
         android:id="@+id/afterAnimationView"
         android:layout_width="match_parent"
@@ -112,6 +113,7 @@
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
-    </RelativeLayout>
+     </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

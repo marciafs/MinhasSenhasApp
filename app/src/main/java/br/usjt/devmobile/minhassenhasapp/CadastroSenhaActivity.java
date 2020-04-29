@@ -36,7 +36,7 @@ public class CadastroSenhaActivity extends AppCompatActivity {
         senha = (TextInputEditText)findViewById(R.id.cadSenhaEditTextInput);
         url = (TextInputEditText)findViewById(R.id.cadUrlEditTextInput);
         observacao = (TextInputEditText)findViewById(R.id.cadObservacaoEditTextInput);
-        botaoAlterar = findViewById(R.id.buttonAltararCadastro);
+        //botaoAlterar = findViewById(R.id.buttonAltararCadastro);
 
         Intent intent = getIntent();
         if(intent != null && intent.hasExtra("senha")){

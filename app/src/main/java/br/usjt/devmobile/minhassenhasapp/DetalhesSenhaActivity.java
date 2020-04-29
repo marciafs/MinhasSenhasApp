@@ -2,6 +2,8 @@ package br.usjt.devmobile.minhassenhasapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,7 @@ public class DetalhesSenhaActivity extends AppCompatActivity {
     private TextView textViewSenha;
     private TextView textViewUrl;
     private TextView textViewObservacao;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +39,30 @@ public class DetalhesSenhaActivity extends AppCompatActivity {
     }
 
     public void deletarSenha(View view) {
-        // TODO Os alunos devem implementar isso como trabalho da semana
-        finish();
+        new AlertDialog.Builder(this)
+                .setTitle("Deletando curso")
+                .setMessage("Tem certeza que deseja deletar essa senha?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        db.senhaDao().delete(senha);
+                        finish();
+                    } }).setNegativeButton("Não", null).show();
     }
 
     public void alterarSenha(View view) {
-        Intent intent = new Intent(this, CadastroSenhaActivity.class);
-        intent.putExtra("senha",senha);
-        startActivity(intent);
+        final Intent intent = new Intent(this, CadastroSenhaActivity.class);
+        new AlertDialog.Builder(this)
+                .setTitle("Alterando senha")
+                .setMessage("Tem certeza que deseja alterar essa senha?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        intent.putExtra("senha",senha);
+                        startActivity(intent);
+                        finish();
+                    } }).setNegativeButton("Não", null).show();
+
         finish();
     }
 
